@@ -1,0 +1,248 @@
+🔥 ASSIGNMENT 6 — DEPLOY WEB APPLICATION USING PAAS (RENDER)
+COMPLETE FINAL STEP-BY-STEP PRACTICAL SHEET
+This is the final clean execution flow for deploying a Flask web application on a PaaS cloud platform using Render.
+
+🎯 AIM
+To deploy a Flask web application on a PaaS (Platform as a Service) cloud platform.
+
+🧠 REQUIREMENTS
+✅ Python Installed ✅ Git Installed ✅ GitHub Account ✅ Render Account ✅ Internet Connection
+
+🌐 COMPLETE FLOW
+Create Flask App
+↓
+Create requirements.txt
+↓
+Create Procfile
+↓
+Test Application Locally
+↓
+Push Code to GitHub
+↓
+Connect GitHub to Render
+↓
+Deploy Application
+↓
+Access Live Website
+
+✅ STEP 1 — CREATE PROJECT FOLDER
+Open terminal.
+Run:
+mkdir flaskapp
+
+✅ STEP 2 — ENTER PROJECT FOLDER
+cd flaskapp
+
+✅ STEP 3 — INSTALL FLASK
+pip3 install flask
+
+🎯 WHAT THIS DOES
+Installs Flask web framework.
+
+✅ STEP 4 — CREATE main.py
+touch main.py
+
+✅ STEP 5 — OPEN main.py
+nano main.py
+
+✅ STEP 6 — ADD FLASK CODE
+Paste:
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Hello from Cloud PaaS Deployment"
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
+
+🎯 IMPORTANT
+host='0.0.0.0'
+allows internet access to app.
+
+✅ STEP 7 — SAVE FILE
+Press:
+* CTRL + O
+* Enter
+* CTRL + X
+
+✅ STEP 8 — CREATE requirements.txt
+⚠️ IMPORTANT: Do NOT use:
+pip freeze > requirements.txt
+because it may include unwanted macOS packages.
+
+✅ CREATE FILE MANUALLY
+Run:
+nano requirements.txt
+
+ADD ONLY THIS
+Flask
+
+SAVE FILE
+Again:
+* CTRL + O
+* Enter
+* CTRL + X
+
+🎯 WHAT IS requirements.txt?
+Contains: ✅ Python dependencies needed for deployment.
+
+✅ STEP 9 — CREATE Procfile
+Run:
+touch Procfile
+
+✅ STEP 10 — OPEN Procfile
+nano Procfile
+
+✅ ADD THIS CONTENT
+web: python3 main.py
+
+🎯 WHAT IS Procfile?
+Tells Render: ✅ how to start application.
+
+✅ STEP 11 — SAVE FILE
+Press:
+* CTRL + O
+* Enter
+* CTRL + X
+
+✅ STEP 12 — TEST APPLICATION LOCALLY
+Run:
+python3 main.py
+
+🎉 EXPECTED OUTPUT
+Running on http://127.0.0.1:5000
+
+✅ STEP 13 — OPEN IN BROWSER
+Visit:
+http://127.0.0.1:5000
+
+🎉 EXPECTED OUTPUT
+Hello from Cloud PaaS Deployment
+
+✅ STEP 14 — STOP SERVER
+Press:
+CTRL + C
+
+✅ STEP 15 — CREATE GITHUB REPOSITORY
+Open:
+GitHub
+Create new repository.
+Example:
+cloudPr
+
+✅ STEP 16 — INITIALIZE GIT
+Run:
+git init
+
+✅ STEP 17 — ADD FILES
+git add .
+
+✅ STEP 18 — COMMIT FILES
+git commit -m "Initial commit"
+
+✅ STEP 19 — CONNECT GITHUB REPOSITORY
+Run:
+git remote add origin YOUR_GITHUB_REPO_URL
+Example:
+git remote add origin https://github.com/SonamUgale/cloudPr.git
+
+✅ STEP 20 — PUSH CODE TO GITHUB
+Run:
+git push -u origin master
+OR:
+git push -u origin main
+(depending on branch)
+
+⚠️ IMPORTANT
+GitHub password authentication is removed.
+Use: ✅ Personal Access Token (PAT)
+instead of GitHub password.
+
+🎉 CODE PUSHED SUCCESSFULLY
+
+✅ STEP 21 — OPEN RENDER
+Open:
+Render
+Login using GitHub account.
+
+✅ STEP 22 — CREATE WEB SERVICE
+Click:
+New +
+Choose:
+Web Service
+
+✅ STEP 23 — CONNECT GITHUB REPOSITORY
+Select repository:
+cloudPr
+Click:
+Connect
+
+✅ STEP 24 — CONFIGURE DEPLOYMENT
+Fill:
+Field	Value
+Name	cloudpractical
+Runtime	Python 3
+Build Command	pip install -r requirements.txt
+Start Command	python3 main.py
+SELECT PLAN
+Choose:
+Free Plan
+
+✅ STEP 25 — DEPLOY APPLICATION
+Click:
+Deploy Web Service
+
+🎯 WHAT HAPPENS?
+Render: ✅ clones GitHub repository ✅ installs Flask ✅ starts Flask app ✅ hosts application online
+
+⏳ WAIT
+Deployment may take:
+* 2–5 minutes
+
+✅ STEP 26 — OPEN LIVE WEBSITE
+Render generates URL like:
+https://cloudpractical.onrender.com
+Open it.
+
+🎉 FINAL OUTPUT
+Hello from Cloud PaaS Deployment
+
+🎉 PRACTICAL COMPLETED
+You successfully: ✅ created Flask app ✅ configured deployment files ✅ pushed code to GitHub ✅ connected Render ✅ deployed live application
+
+🔥 IMPORTANT FILES
+File	Purpose
+main.py	Flask application
+requirements.txt	dependencies
+Procfile	startup command
+🔥 IMPORTANT CONCEPTS
+Concept	Meaning
+PaaS	Platform as a Service
+Flask	Python web framework
+Render	cloud deployment platform
+Procfile	app startup configuration
+⚠️ COMMON ERRORS + FIXES
+Error	Cause	Fix
+Build failed	wrong requirements.txt	keep only Flask
+Invalid username/password	GitHub password removed	use PAT token
+App crashed	wrong Procfile	check startup command
+Blank page	Flask app not running	verify code
+🎯 FINAL PRACTICAL FLOW
+Create Flask App
+↓
+Create requirements.txt
+↓
+Create Procfile
+↓
+Push Code to GitHub
+↓
+Connect Render
+↓
+Deploy Application
+↓
+Access Live URL
+This is the complete final execution flow for PaaS Web Application Deployment practical.
+
