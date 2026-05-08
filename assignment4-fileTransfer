@@ -1,0 +1,192 @@
+🔥 ASSIGNMENT 4 — FILE TRANSFER BETWEEN VIRTUAL MACHINES USING SCP
+COMPLETE FINAL STEP-BY-STEP PRACTICAL SHEET
+This is the clean final execution flow based on everything you actually performed successfully.
+
+🎯 AIM
+To transfer a file from one virtual machine to another using SCP (Secure Copy Protocol).
+
+🧠 PRACTICAL SETUP
+Machine	Key Pair
+VM1	KP1.pem
+VM2	KP2.pem
+🔥 IMPORTANT CONCEPT
+To transfer file:
+VM1 → VM2
+VM1 must have:
+KP2.pem
+because VM2 authenticates using its own key pair.
+
+🌐 COMPLETE FLOW
+MacBook
+↓
+SSH into VM1 using KP1.pem
+↓
+Copy KP2.pem into VM1
+↓
+SCP file from VM1 → VM2
+↓
+Verify inside VM2
+
+✅ STEP 1 — OPEN TERMINAL
+Open Mac terminal.
+
+✅ STEP 2 — GO TO DOWNLOADS FOLDER
+(Where PEM files are stored)
+cd Downloads
+
+✅ STEP 3 — FIX KP1.pem PERMISSIONS
+chmod 400 KP1.pem
+
+🎯 WHY?
+AWS requires private key permissions to be restricted.
+Without this: ❌ SSH login fails.
+
+✅ STEP 4 — CONNECT TO VM1
+ssh -i KP1.pem ubuntu@3.25.153.90
+
+🧠 UNDERSTAND THIS COMMAND
+Part	Meaning
+ssh	Secure Shell login
+-i KP1.pem	use private key
+ubuntu	AWS Ubuntu username
+3.25.153.90	VM1 public IP
+⚠️ FIRST TIME CONNECTION
+You may see:
+Are you sure you want to continue connecting?
+Type:
+yes
+
+🎉 SUCCESS
+Terminal changes to:
+ubuntu@ip-172-31-xx-xx
+Meaning: ✅ connected to VM1.
+
+✅ STEP 5 — CREATE FILE IN VM1
+Inside VM1 run:
+touch test.txt
+
+✅ STEP 6 — ADD CONTENT TO FILE
+Open file:
+nano test.txt
+Add:
+Hello Cloud Computing
+
+✅ SAVE FILE
+Press:
+* CTRL + O
+* Enter
+* CTRL + X
+
+✅ STEP 7 — VERIFY FILE
+Run:
+ls
+Expected:
+test.txt
+
+✅ STEP 8 — EXIT VM1
+Run:
+exit
+Back to:
+apple@MacBookPro
+
+✅ STEP 9 — COPY KP2.pem INTO VM1
+📍RUN ON MAC TERMINAL
+scp -i KP1.pem KP2.pem ubuntu@3.25.153.90:/home/ubuntu
+
+🎯 WHY THIS STEP?
+VM1 needs:
+KP2.pem
+to authenticate into VM2.
+
+✅ STEP 10 — LOGIN INTO VM1 AGAIN
+ssh -i KP1.pem ubuntu@3.25.153.90
+
+✅ STEP 11 — CHECK FILES
+Inside VM1:
+ls
+Expected:
+KP2.pem
+test.txt
+
+✅ STEP 12 — FIX KP2.pem PERMISSIONS
+Inside VM1 run:
+chmod 400 KP2.pem
+
+🎯 WHY?
+Without correct permissions: ❌ SCP/SSH authentication fails.
+
+✅ STEP 13 — TRANSFER FILE TO VM2
+Inside VM1 run:
+scp -i KP2.pem test.txt ubuntu@13.239.249.62:/home/ubuntu
+
+🧠 UNDERSTAND THIS COMMAND
+Part	Meaning
+scp	secure copy
+-i KP2.pem	use VM2 key
+test.txt	file to transfer
+ubuntu	destination username
+13.239.249.62	VM2 public IP
+/home/ubuntu	destination path
+⚠️ FIRST TIME CONNECTION
+You may see:
+Are you sure you want to continue connecting?
+Type:
+yes
+
+🎉 SUCCESS
+File transferred successfully.
+
+✅ STEP 14 — EXIT VM1
+exit
+
+✅ STEP 15 — FIX KP2.pem PERMISSIONS ON MAC
+Run on Mac:
+chmod 400 KP2.pem
+
+✅ STEP 16 — CONNECT TO VM2
+Run:
+ssh -i KP2.pem ubuntu@13.239.249.62
+
+🎉 SUCCESS
+Now inside VM2.
+
+✅ STEP 17 — VERIFY FILE TRANSFER
+Inside VM2 run:
+ls
+Expected:
+test.txt
+🎉 SCP practical completed successfully.
+
+🔥 IMPORTANT COMMANDS USED
+Command	Purpose
+ssh	remote login
+scp	secure file transfer
+chmod 400	secure PEM permissions
+touch	create file
+nano	edit file
+ls	list files
+🔥 IMPORTANT EXAM CONCEPTS
+Concept	Meaning
+SCP	Secure Copy Protocol
+SSH	Secure Shell
+PEM file	private authentication key
+Port 22	SSH communication port
+⚠️ COMMON ERRORS + FIXES
+Error	Cause	Fix
+Permission denied (publickey)	wrong key	use correct PEM
+UNPROTECTED PRIVATE KEY	wrong permissions	chmod 400
+Connection timed out	security group issue	allow SSH
+No such file	wrong path	verify filename
+🎯 FINAL PRACTICAL FLOW
+Connect VM1
+↓
+Create file
+↓
+Copy KP2.pem into VM1
+↓
+Transfer file to VM2 using SCP
+↓
+Login VM2
+↓
+Verify file
+This is the complete proper AWS SCP practical execution flow.
