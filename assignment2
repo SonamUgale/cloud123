@@ -1,0 +1,162 @@
+🔥 ASSIGNMENT 2 — GOOGLE APP ENGINE HELLO WORLD
+COMPLETE FINAL STEP-BY-STEP PRACTICAL SHEET
+(Use this exact sequence in exam/lab)
+This is the clean, corrected flow after all the errors we solved.
+
+🎯 AIM
+To install Google Cloud SDK and run a Hello World application using Google App Engine.
+
+✅ STEP 1 — INSTALL GOOGLE CLOUD SDK
+Open terminal and run:
+curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-darwin-x86_64.tar.gz
+
+✅ STEP 2 — EXTRACT SDK
+tar -xf google-cloud-cli-darwin-x86_64.tar.gz
+
+✅ STEP 3 — INSTALL SDK
+./google-cloud-sdk/install.sh
+During installation:
+* type Y
+* press Enter for default .zshrc
+
+✅ STEP 4 — RESTART TERMINAL
+Close terminal completely.
+Open terminal again.
+
+✅ STEP 5 — CHECK SDK INSTALLATION
+gcloud --version
+Expected:
+Google Cloud SDK 567.0.0
+
+⚠️ IMPORTANT ERROR WE GOT
+Python 3.9 incompatibility caused:
+gcloud app create crash
+
+✅ STEP 6 — INSTALL PYTHON 3.11
+Check Homebrew:
+brew --version
+Then install Python 3.11:
+brew install python@3.11
+
+✅ STEP 7 — SET GCLOUD TO USE PYTHON 3.11
+export CLOUDSDK_PYTHON=/opt/homebrew/bin/python3.11
+
+✅ STEP 8 — LOGIN TO GOOGLE CLOUD
+gcloud auth login
+Browser opens:
+* login with Google account
+* allow permissions
+
+✅ STEP 9 — CREATE PROJECT
+⚠️ IMPORTANT: Project ID:
+* lowercase only
+* hyphens allowed
+* no uppercase
+Correct example:
+gcloud projects create sonam-cloud-project-123
+
+✅ STEP 10 — SET PROJECT
+gcloud config set project sonam-cloud-project-123
+
+⚠️ STEP 11 — APP ENGINE CREATION
+Command:
+gcloud app create
+
+⚠️ IMPORTANT NOTE
+This required:
+billing account attached
+Without billing: ❌ actual deployment not possible.
+
+✅ ALTERNATIVE WE USED
+We continued locally using Flask.
+This is enough to understand the workflow.
+
+✅ STEP 12 — CREATE PROJECT FOLDER
+mkdir myapp
+
+✅ STEP 13 — ENTER FOLDER
+cd myapp
+
+✅ STEP 14 — INSTALL FLASK
+pip3 install flask
+
+✅ STEP 15 — CREATE main.py
+touch main.py
+
+✅ STEP 16 — OPEN main.py
+nano main.py
+
+✅ STEP 17 — PASTE THIS CODE
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello():
+    return "Hello World from Google App Engine"
+
+if __name__ == '__main__':
+    app.run(host='127.0.0.1', port=8080, debug=True)
+
+✅ STEP 18 — SAVE FILE
+Inside nano:
+* CTRL + O
+* Enter
+* CTRL + X
+
+✅ STEP 19 — CREATE app.yaml
+touch app.yaml
+
+✅ STEP 20 — OPEN app.yaml
+nano app.yaml
+
+✅ STEP 21 — ADD THIS CONTENT
+runtime: python39
+
+✅ STEP 22 — SAVE FILE
+Again:
+* CTRL + O
+* Enter
+* CTRL + X
+
+✅ STEP 23 — RUN APPLICATION
+python3 main.py
+
+✅ EXPECTED OUTPUT
+Running on http://127.0.0.1:8080
+
+✅ STEP 24 — OPEN IN BROWSER
+Open:
+http://127.0.0.1:8080
+OR run:
+open http://127.0.0.1:8080
+
+✅ FINAL OUTPUT
+Hello World from Google App Engine
+
+✅ STEP 25 — STOP SERVER
+Press:
+CTRL + C
+
+🔥 IMPORTANT FILES
+File	Purpose
+main.py	Flask application
+app.yaml	GAE configuration
+🔥 IMPORTANT COMMANDS
+Command	Purpose
+gcloud auth login	Login
+gcloud projects create	Create project
+gcloud config set project	Set project
+python3 main.py	Run app
+gcloud app create	Create App Engine
+gcloud app deploy	Deploy app
+🔥 IMPORTANT EXAM POINT
+If examiner asks:
+“Why deployment not completed?”
+Answer:
+“Google App Engine deployment requires billing-enabled cloud project. The application was successfully configured and tested locally.”
+
+🎯 THIS IS THE COMPLETE CORRECT FLOW
+No unnecessary steps. No confusion. No missing commands.
+This is your final clean practical execution sequence.
+
