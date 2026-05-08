@@ -1,0 +1,239 @@
+🔥 ASSIGNMENT 5 — LAUNCH A VIRTUAL MACHINE USING AWS EC2
+COMPLETE FINAL STEP-BY-STEP PRACTICAL SHEET
+This is the clean practical execution flow for creating and connecting to an AWS EC2 Virtual Machine.
+
+🎯 AIM
+To create and launch a Virtual Machine (EC2 Instance) using AWS Cloud.
+
+🧠 REQUIREMENTS
+✅ AWS account ✅ Internet connection ✅ Terminal (Mac/Linux) ✅ SSH enabled
+
+🌐 COMPLETE FLOW
+Login AWS
+↓
+Open EC2 Dashboard
+↓
+Launch Instance
+↓
+Choose Ubuntu AMI
+↓
+Create Key Pair
+↓
+Configure Security Group
+↓
+Launch Instance
+↓
+Connect using SSH
+↓
+Run Linux commands
+
+✅ STEP 1 — LOGIN TO AWS
+Open:
+AWS Console
+Login using AWS credentials.
+
+✅ STEP 2 — OPEN EC2 DASHBOARD
+In AWS search bar type:
+EC2
+Click:
+EC2
+
+🎯 WHAT IS EC2?
+EC2 = Elastic Compute Cloud
+Used to: ✅ create virtual machines in cloud.
+
+✅ STEP 3 — CLICK “LAUNCH INSTANCE”
+Click:
+Launch Instance
+
+🎯 WHAT IS INSTANCE?
+Instance = virtual machine.
+
+✅ STEP 4 — GIVE INSTANCE NAME
+Example:
+VM1
+OR
+CloudVM
+
+✅ STEP 5 — CHOOSE AMAZON MACHINE IMAGE (AMI)
+🔥 VERY IMPORTANT
+AMI = Amazon Machine Image
+Used to select: ✅ Operating System
+
+SELECT:
+Ubuntu Server
+Choose: ✅ Free Tier Eligible
+
+🎯 WHAT HAPPENS?
+AWS installs Ubuntu OS into VM.
+
+✅ STEP 6 — CHOOSE INSTANCE TYPE
+Select:
+t2.micro
+
+🎯 WHY?
+Because: ✅ free tier ✅ lightweight ✅ sufficient for practicals
+
+✅ STEP 7 — CREATE KEY PAIR
+🔥 MOST IMPORTANT STEP
+Click:
+Create new key pair
+
+ENTER:
+Setting	Value
+Key Pair Name	KP1
+Type	RSA
+Format	.pem
+CLICK:
+Create Key Pair
+
+🎯 WHAT HAPPENS?
+AWS downloads:
+KP1.pem
+This file is used for: ✅ secure SSH login.
+
+⚠️ IMPORTANT
+Without .pem file: ❌ cannot connect to VM.
+
+✅ STEP 8 — NETWORK SETTINGS
+🔥 VERY IMPORTANT
+Allow:
+✅ SSH Port:
+22
+
+🎯 WHY?
+SSH is required for terminal login.
+
+ALSO ENABLE:
+✅ HTTP Port:
+80
+(optional but useful)
+
+✅ STEP 9 — STORAGE SETTINGS
+Default:
+8 GB
+is enough.
+
+🎯 WHAT THIS DOES?
+Allocates storage space for VM.
+
+✅ STEP 10 — CLICK “LAUNCH INSTANCE”
+AWS now: ✅ creates VM ✅ installs Ubuntu ✅ configures networking ✅ starts machine
+
+🎉 INSTANCE CREATED
+You’ll see:
+Instance State: Running
+
+✅ STEP 11 — COPY PUBLIC IP
+Example:
+3.25.153.90
+
+🎯 WHY IMPORTANT?
+Used for: ✅ SSH login ✅ SCP transfer
+
+✅ STEP 12 — OPEN TERMINAL
+Open Mac terminal.
+
+✅ STEP 13 — GO TO DOWNLOADS FOLDER
+Usually PEM file gets downloaded here.
+Run:
+cd Downloads
+
+✅ STEP 14 — CHECK PEM FILE EXISTS
+Run:
+ls
+Expected:
+KP1.pem
+
+✅ STEP 15 — FIX PEM FILE PERMISSIONS
+🔥 VERY IMPORTANT
+Run:
+chmod 400 KP1.pem
+
+🎯 WHY?
+AWS blocks insecure private key permissions.
+Without this: ❌ SSH fails.
+
+✅ STEP 16 — CONNECT TO EC2 INSTANCE
+Run:
+ssh -i KP1.pem ubuntu@3.25.153.90
+(replace IP with YOUR actual public IP)
+
+🧠 UNDERSTAND THIS COMMAND
+Part	Meaning
+ssh	Secure Shell
+-i KP1.pem	use private key
+ubuntu	AWS username
+public IP	VM address
+⚠️ FIRST TIME CONNECTION
+You may see:
+Are you sure you want to continue connecting?
+Type:
+yes
+
+🎉 SUCCESS
+Terminal changes from:
+apple@MacBookPro
+to:
+ubuntu@ip-172-31-xx-xx
+Meaning: ✅ successfully connected to EC2 VM.
+
+✅ STEP 17 — RUN BASIC LINUX COMMANDS
+Check files
+ls
+
+Create file
+touch test.txt
+
+Verify file
+ls
+Expected:
+test.txt
+
+Update packages
+sudo apt update
+
+🎯 WHAT THIS DOES?
+Updates Ubuntu package list.
+
+✅ STEP 18 — EXIT VM
+Run:
+exit
+
+🎉 PRACTICAL COMPLETED
+You successfully: ✅ launched EC2 VM ✅ created key pair ✅ configured security group ✅ connected using SSH ✅ executed Linux commands
+
+🔥 IMPORTANT COMMANDS
+Command	Purpose
+ssh	remote login
+chmod 400	secure key permissions
+ls	list files
+touch	create file
+sudo apt update	update packages
+🔥 IMPORTANT CONCEPTS
+Concept	Meaning
+EC2	Virtual Machine service
+AMI	Operating System template
+Key Pair	Authentication key
+SSH	Secure remote terminal
+Security Group	Firewall rules
+⚠️ COMMON ERRORS + FIXES
+Error	Cause	Fix
+Permission denied	wrong key	use correct PEM
+UNPROTECTED PRIVATE KEY	wrong permissions	chmod 400
+Connection timed out	SSH blocked	allow port 22
+Host not found	wrong IP	use public IP
+🎯 FINAL PRACTICAL FLOW
+Create EC2
+↓
+Generate PEM file
+↓
+Allow SSH
+↓
+Launch VM
+↓
+Connect using SSH
+↓
+Run Linux commands
+This is the complete final execution flow for AWS EC2 practical.
+
