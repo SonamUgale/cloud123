@@ -1,0 +1,239 @@
+🔥 ASSIGNMENT 7 — AWS LAMBDA + S3 TRIGGER
+COMPLETE FINAL STEP-BY-STEP PRACTICAL SHEET
+This is the clean final execution flow for creating an AWS Lambda function triggered by S3 file uploads.
+
+🎯 AIM
+To create an AWS Lambda function that automatically executes when a file is uploaded into an S3 bucket.
+
+🧠 REQUIREMENTS
+✅ AWS Account ✅ Internet Connection ✅ AWS Console Access
+
+🌐 COMPLETE FLOW
+Create S3 Bucket
+↓
+Upload File
+↓
+Create Lambda Function
+↓
+Write Lambda Code
+↓
+Deploy Function
+↓
+Add S3 Trigger
+↓
+Upload Another File
+↓
+Verify Execution in CloudWatch
+
+✅ STEP 1 — LOGIN TO AWS
+Open:
+AWS Console
+Login using AWS credentials.
+
+✅ STEP 2 — OPEN S3 SERVICE
+In AWS search bar type:
+S3
+Click:
+S3
+
+🎯 WHAT IS S3?
+S3 = Simple Storage Service
+Used for: ✅ cloud file storage.
+
+✅ STEP 3 — CREATE S3 BUCKET
+Click:
+Create Bucket
+
+ENTER BUCKET DETAILS
+Bucket Name
+Example:
+sonam-cloud-bucket-123
+⚠️ IMPORTANT: Bucket names must:
+* be globally unique
+* contain lowercase only
+
+REGION
+Choose nearby region.
+Example:
+Asia Pacific (Mumbai)
+
+KEEP OTHER SETTINGS DEFAULT
+
+CLICK:
+Create Bucket
+
+🎉 BUCKET CREATED
+
+✅ STEP 4 — OPEN BUCKET
+Click your bucket name.
+
+✅ STEP 5 — UPLOAD FILE
+Click:
+Upload
+
+SELECT ANY FILE
+Examples:
+* text file
+* image
+* PDF
+
+CLICK:
+Upload
+
+🎯 WHAT HAPPENED?
+File stored in:
+AWS S3 cloud storage
+
+✅ STEP 6 — OPEN LAMBDA SERVICE
+In AWS search bar type:
+Lambda
+Click:
+Lambda
+
+🎯 WHAT IS LAMBDA?
+AWS Lambda: ✅ executes code automatically ✅ without managing servers
+This is called:
+Serverless Computing
+
+✅ STEP 7 — CREATE LAMBDA FUNCTION
+Click:
+Create Function
+
+SELECT
+✅ Author from scratch
+
+ENTER FUNCTION DETAILS
+Field	Value
+Function Name	fileUploadTrigger
+Runtime	Python 3.x
+CLICK:
+Create Function
+
+🎉 LAMBDA FUNCTION CREATED
+
+✅ STEP 8 — ADD LAMBDA CODE
+Inside Lambda code editor: replace existing code with:
+def lambda_handler(event, context):
+    print("File uploaded successfully")
+    return {
+        'statusCode': 200,
+        'body': 'Lambda executed'
+    }
+
+🎯 WHAT THIS CODE DOES
+When Lambda runs: ✅ prints success message ✅ returns response
+
+✅ STEP 9 — DEPLOY FUNCTION
+Click:
+Deploy
+
+🎉 FUNCTION SAVED
+
+✅ STEP 10 — ADD S3 TRIGGER
+Click:
+Add Trigger
+
+SELECT SOURCE
+Choose:
+S3
+
+SELECT BUCKET
+Choose your:
+bucket name
+
+EVENT TYPE
+Choose:
+PUT
+Meaning: ✅ trigger when file uploaded.
+
+ENABLE TRIGGER
+Tick:
+Enable trigger
+
+CLICK:
+Add
+
+🎉 S3 TRIGGER CONNECTED
+Now:
+S3 upload → Lambda execution
+works automatically.
+
+✅ STEP 11 — TEST TRIGGER
+Go back to:
+S3 bucket
+Upload another file.
+
+🎯 WHAT HAPPENS INTERNALLY?
+File uploaded to S3
+↓
+S3 event generated
+↓
+Lambda triggered automatically
+↓
+Python code executed
+↓
+Logs stored in CloudWatch
+
+✅ STEP 12 — VERIFY EXECUTION
+Open:
+Lambda → Monitor
+Click:
+View CloudWatch Logs
+
+OR DIRECT METHOD
+Open:
+CloudWatch
+Then:
+Log groups
+Open:
+/aws/lambda/fileUploadTrigger
+
+✅ STEP 13 — OPEN LOG STREAM
+Click latest log stream.
+
+🎉 EXPECTED OUTPUT
+START RequestId:
+File uploaded successfully
+END RequestId:
+
+🎯 WHAT THIS CONFIRMS
+✅ S3 trigger working ✅ Lambda executed successfully ✅ Serverless workflow completed
+
+🎉 PRACTICAL COMPLETED
+You successfully: ✅ created S3 bucket ✅ uploaded files ✅ created Lambda function ✅ connected S3 trigger ✅ verified CloudWatch logs
+
+🔥 IMPORTANT CONCEPTS
+Concept	Meaning
+S3	cloud storage service
+Lambda	serverless compute service
+Trigger	event that starts Lambda
+CloudWatch	monitoring & logs
+🔥 IMPORTANT SERVICES USED
+Service	Purpose
+S3	file storage
+Lambda	automatic code execution
+CloudWatch	execution logs
+⚠️ COMMON ERRORS + FIXES
+Error	Cause	Fix
+Bucket already exists	globally unique names	add numbers
+Lambda not triggering	trigger missing	reconnect trigger
+No logs visible	function not executed	upload file again
+Access denied	permission issue	allow IAM permissions
+🎯 FINAL PRACTICAL FLOW
+Create S3 Bucket
+↓
+Upload File
+↓
+Create Lambda Function
+↓
+Add Lambda Code
+↓
+Deploy Function
+↓
+Connect S3 Trigger
+↓
+Upload Another File
+↓
+Check CloudWatch Logs
+This is the complete final execution flow for AWS Lambda + S3 practical.
+
