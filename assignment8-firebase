@@ -1,0 +1,190 @@
+🔥 ASSIGNMENT 8 — FIREBASE AUTHENTICATION + FIRESTORE DATABASE
+COMPLETE FINAL STEP-BY-STEP PRACTICAL SHEET
+This is the clean final execution flow for Firebase Authentication and Firestore Database practical.
+
+🎯 AIM
+To create a Firebase project, enable Google Authentication, and store user data in Firestore Database.
+
+🧠 REQUIREMENTS
+✅ Google Account ✅ Internet Connection ✅ Browser
+
+🌐 COMPLETE FLOW
+Open Firebase
+↓
+Create Firebase Project
+↓
+Enable Authentication
+↓
+Enable Google Sign-In
+↓
+Create Firestore Database
+↓
+Create Collection
+↓
+Insert Document
+↓
+Verify Data Storage
+
+✅ STEP 1 — OPEN FIREBASE CONSOLE
+Open:
+Firebase Console
+Login using Google account.
+
+✅ STEP 2 — CREATE FIREBASE PROJECT
+Click:
+Create a Project
+
+ENTER PROJECT NAME
+Example:
+CloudPractical
+
+CLICK:
+Continue
+
+OPTIONAL
+Google Analytics: ✅ Keep OFF for practical.
+
+CLICK:
+Create Project
+
+🎉 FIREBASE PROJECT CREATED
+
+✅ STEP 3 — OPEN AUTHENTICATION SERVICE
+In left sidebar open:
+Build → Authentication
+
+CLICK:
+Get Started
+
+🎯 WHAT IS AUTHENTICATION?
+Authentication is used to: ✅ verify user identity/login.
+
+✅ STEP 4 — ENABLE GOOGLE SIGN-IN
+Open:
+Sign-in Method
+
+SELECT:
+Google
+
+CLICK:
+Enable
+
+SELECT SUPPORT EMAIL
+Choose your Gmail account.
+
+CLICK:
+Save
+
+🎉 GOOGLE AUTHENTICATION ENABLED
+Now users can: ✅ login using Google account.
+
+✅ STEP 5 — OPEN FIRESTORE DATABASE
+In left sidebar open:
+Build → Firestore Database
+
+CLICK:
+Create Database
+
+🎯 WHAT IS FIRESTORE?
+Firestore is: ✅ NoSQL cloud database.
+Used to: ✅ store application data online.
+
+✅ STEP 6 — SELECT DATABASE MODE
+Choose:
+Start in test mode
+
+🎯 WHY TEST MODE?
+Allows: ✅ easy read/write operations during practical.
+
+CLICK:
+Next
+
+✅ STEP 7 — SELECT REGION
+Choose nearby region.
+Example:
+asia-south1
+
+CLICK:
+Enable
+
+🎉 FIRESTORE DATABASE CREATED
+
+✅ STEP 8 — CREATE COLLECTION
+Click:
+Start Collection
+
+ENTER COLLECTION NAME
+Example:
+Users
+
+CLICK:
+Next
+
+🎯 WHAT IS COLLECTION?
+Collection = group of related documents.
+Similar to:
+table
+in SQL databases.
+
+✅ STEP 9 — CREATE DOCUMENT
+For:
+Document ID
+Choose:
+Auto-ID
+
+✅ ADD DOCUMENT FIELDS
+Field	Type	Value
+name	string	Sonam
+email	string	sonam@gmail.com
+CLICK:
+Save
+
+🎉 DOCUMENT STORED SUCCESSFULLY
+
+✅ STEP 10 — VERIFY DATA
+Now you’ll see:
+Users
+collection containing: ✅ stored document data.
+
+🎯 WHAT HAPPENED INTERNALLY?
+User data entered
+↓
+Stored inside Firestore
+↓
+Managed by Firebase cloud
+
+🎉 PRACTICAL COMPLETED
+You successfully: ✅ created Firebase project ✅ enabled Google Authentication ✅ created Firestore database ✅ created collection ✅ inserted document data
+
+🔥 IMPORTANT CONCEPTS
+Concept	Meaning
+Firebase	Google cloud backend platform
+Authentication	user login verification
+Firestore	NoSQL cloud database
+Collection	group of documents
+Document	stored data record
+🔥 IMPORTANT SERVICES USED
+Service	Purpose
+Firebase Authentication	user login
+Firestore Database	cloud data storage
+⚠️ COMMON ERRORS + FIXES
+Error	Cause	Fix
+Permission denied	restrictive rules	use test mode
+Google auth not working	disabled sign-in method	enable Google
+Firestore missing	database not created	create Firestore
+Wrong region	immutable region selection	choose carefully
+🎯 FINAL PRACTICAL FLOW
+Create Firebase Project
+↓
+Enable Authentication
+↓
+Enable Google Sign-In
+↓
+Create Firestore Database
+↓
+Create Collection
+↓
+Insert Document
+↓
+Verify Stored Data
+This is the complete final execution flow for Firebase Authentication + Firestore Database practical.
